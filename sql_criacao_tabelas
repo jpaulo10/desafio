@@ -1,0 +1,42 @@
+create table desafio.usuario
+(
+    id              serial  not null
+        constraint usuario_pk
+            primary key,
+    cpf             varchar not null,
+    nome            varchar,
+    email           varchar not null,
+    data_nascimento varchar
+);
+
+alter table desafio.usuario
+    owner to postgres;
+
+create unique index usuario_cpf_uindex
+    on desafio.usuario (cpf);
+
+create unique index usuario_email_uindex
+    on desafio.usuario (email);
+
+create unique index usuario_id_uindex
+    on desafio.usuario (id);
+
+create table desafio.veiculo
+(
+    id         serial  not null
+        constraint veiculo_pk
+            primary key,
+    marca      varchar not null,
+    modelo     varchar not null,
+    ano        varchar not null,
+    usuario_id integer,
+    valor      varchar
+);
+
+alter table desafio.veiculo
+    owner to postgres;
+
+create unique index veiculo_id_uindex
+    on desafio.veiculo (id);
+
+
